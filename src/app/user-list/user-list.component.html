@@ -1,0 +1,44 @@
+<button (click)="showAddUserForm()">მომხმარებლის დამატება <fa-icon [icon]="faUserPlus"></fa-icon></button>
+<div *ngIf="!showUserForm">
+  <ul class="users">
+    <li *ngFor="let user of users" (click)="selectUser(user.id)" [class.selected]="user.id == selectedUser?.id">
+      <div>
+        <span class="badge">{{user.id}}</span>
+        <span class="badge">{{user.firstName}} </span>
+        <span class="badge">{{user.lastName}}</span>
+        <span class="badge">{{user.salary}}</span>
+        <span class="badge">{{user.hireDate}}</span>
+        <span class="badge">{{user.positionName}}</span>
+      </div>
+      <fa-icon (click)="deleteUser(user.id)" [icon]="faArchive"></fa-icon>
+    </li>
+  </ul>
+</div>
+
+<div *ngIf="selectedUser">
+  <app-user-detail [user]="selectedUser" (saveEvent)="save($event)"></app-user-detail>
+</div>
+<ul *ngIf="showUserForm" style="margin-right: 10px;">
+  <li style="margin-top: 20px">
+    <label for="user-name">სახელი: </label>
+    <input id="user-info" [(ngModel)]="userToAdd.firstName" placeholder="სახელი">
+  </li>
+  <li class="name-box">
+    <label for="user-firstName">გვარი: </label>
+    <input id="user-info" [(ngModel)]="userToAdd.lastName" placeholder="გვარი">
+  </li>
+  <li class="name-box">
+    <label for="user-name">ანაზღაურება: </label>
+    <input id="user-info" [(ngModel)]="userToAdd.salary" placeholder="ანაზღაურება">
+  </li>
+  <li class="name-box">
+    <label for="user-name">აყვანის თარიღი: </label>
+    <input id="user-info" [(ngModel)]="userToAdd.hireDate" placeholder="აყვანის თარიღი">
+  </li>
+  <li class="name-box">
+    <label for="user-name">პოზიცია: </label>
+    <input id="user-info" [(ngModel)]="userToAdd.positionName" placeholder="პოზიცია">
+  </li>
+  <button (click)="addUser()">შენახვა</button>
+</ul>
+

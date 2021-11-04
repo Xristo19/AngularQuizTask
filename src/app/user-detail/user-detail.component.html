@@ -1,0 +1,28 @@
+<div *ngIf="user">
+  <h2>{{user.firstName}} დეტალური ინფორმაცია</h2>
+  <div>
+    <label for="user-id">id: </label>
+    <input id="user-id" [(ngModel)]="user.id" placeholder="id" disabled>
+  </div>
+  <div class="name-box">
+    <label for="user-name">სახელი: </label>
+    <input id="user-name" [(ngModel)]="user.firstName" placeholder="სახელი">
+  </div>
+  <div class="name-box">
+    <label for="user-name">გვარი: </label>
+    <input id="user-name" [(ngModel)]="user.lastName" placeholder="გვარი">
+  </div>
+  <div class="name-box">
+    <label for="user-name">ანაზღაურება: </label>
+    <input id="user-name" [(ngModel)]="user.salary" placeholder="ანაზღაურება">
+  </div>
+  <div class="name-box">
+    <label for="user-name">აყვანის თარიღი: </label>
+    <input id="user-name" [(ngModel)]="user.hireDate" placeholder="აყვანის თარიღი">
+  </div>
+  <div class="name-box">
+    <label for="user-name">პოზიცია: </label>
+    <input id="user-name" [(ngModel)]="user.positionName" placeholder="პოზიცია">
+  </div>
+  <button (click)="save()">შენახვა</button>
+</div>
